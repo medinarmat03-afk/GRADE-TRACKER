@@ -1,5 +1,5 @@
 
-SOURCECODE
+# SOURCECODE
 import sqlite3
 
 import os
@@ -1636,7 +1636,7 @@ class AttachmentService:
 
 
 
-FRONT END
+# FRONT END
 
 
 
@@ -4412,7 +4412,7 @@ if __name__ == "__main__":
 
 
 
-LOGIN
+# LOGIN
 
 
 import tkinter as tk
@@ -5590,23 +5590,17 @@ class LoginSystem:
 
 def show_login(root, on_login_success, undo_manager=None):
 
-  $ Show login system
+    # Show login system
 
    LoginSystem(root, on_login_success)
 
 
 
 def resource_path(relative_path):
-
-   # for logo
-
+   try:
        base_path = sys._MEIPASS
-
    except Exception:
-
        base_path = os.path.abspath(".")
-
-
    return os.path.join(base_path, relative_path)
 
 
