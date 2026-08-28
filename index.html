@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#102a43">
+  <title>GradeTrack | Academic dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .hidden{display:none!important}.auth-screen{min-height:100vh;display:grid;grid-template-columns:minmax(300px,.9fr) minmax(390px,1.1fr);background:#102a43}.auth-art{padding:9vh 8vw;color:white;background:linear-gradient(145deg,#102a43,#0b5968);position:relative;overflow:hidden}.auth-art:after{content:'';position:absolute;width:380px;height:380px;border:1px solid rgba(244,201,93,.3);border-radius:50%;right:-160px;bottom:-100px}.auth-mark{display:grid;place-items:center;width:76px;height:76px;border:1px solid rgba(244,201,93,.6);border-radius:22px;color:#f4c95d;font:700 46px 'Space Grotesk';margin-bottom:25vh}.auth-art h1{font:700 clamp(40px,5vw,72px) 'Space Grotesk';line-height:1;max-width:520px;margin:14px 0 20px}.auth-art p{color:#c1dbe1;max-width:370px;line-height:1.6}.auth-note{border-left:2px solid #f4c95d;display:grid;gap:4px;padding-left:13px;margin-top:70px;font-size:12px}.auth-note span{color:#9ec0cb}.auth-panel{width:min(470px,100%);justify-self:center;align-self:center;padding:40px 48px}.auth-brand{display:flex;align-items:center;gap:10px;color:white;font:700 20px 'Space Grotesk';margin-bottom:80px}.auth-copy h2{font:600 32px 'Space Grotesk';color:white;line-height:1.1;margin:9px 0}.auth-copy .muted{color:#9bb7c5}.auth-form{margin-top:34px}.auth-form label{display:grid;gap:7px;color:#bbd1da;font-size:11px;margin:15px 0}.auth-form input{width:100%;padding:13px 12px;border:1px solid #456174;border-radius:5px;background:#17374e;color:white;outline:0}.auth-form input:focus{border-color:#f4c95d}.auth-form input::placeholder{color:#7693a3}.remember-label{display:flex!important;align-items:center;gap:8px}.remember-label input{width:15px;height:15px;accent-color:#f4c95d}.auth-submit{width:100%;margin-top:10px;padding:14px}.auth-error{color:#ffb4a2;font-size:12px;min-height:16px}.auth-switch{display:block;border:0;background:none;color:#9bb7c5;margin:23px auto 0;font-size:12px}.auth-switch strong{color:#f4c95d}.sidebar-links{display:grid;gap:12px}.logout-button{color:#f4a08d}@media(max-width:700px){.auth-screen{display:block}.auth-art{padding:34px 26px 30px}.auth-mark{margin-bottom:45px;width:55px;height:55px;font-size:32px}.auth-art h1{font-size:42px}.auth-note{margin-top:30px}.auth-panel{padding:38px 26px 50px}.auth-brand{margin-bottom:55px}}
+  </style>
+</head>
+<body>
+  <section class="auth-screen" id="auth-screen">
+    <div class="auth-art"><div class="auth-mark">G</div><span class="section-kicker">PUP Grade Tracker</span><h1>Make every mark count.</h1><p>One calm place for your scores, subjects, and next best move.</p><div class="auth-note"><strong>Private by default</strong><span>Your tracker stays on this browser.</span></div></div>
+    <div class="auth-panel">
+      <div class="auth-brand"><span class="brand-mark">G</span><span>GradeTrack</span></div>
+      <div class="auth-copy" id="login-copy"><span class="section-kicker">Welcome back</span><h2>Sign in to your tracker.</h2><p class="muted">Pick up exactly where you left off.</p></div>
+      <div class="auth-copy hidden" id="register-copy"><span class="section-kicker">New here?</span><h2>Create your account.</h2><p class="muted">Set up your private academic workspace.</p></div>
+      <form id="auth-form" class="auth-form">
+        <div id="register-fields" class="hidden"><label>Full name<input name="fullName" autocomplete="name" placeholder="e.g. Maria Santos"></label><label>Course or program<input name="course" placeholder="e.g. BS Computer Science"></label><label>Student ID<input name="studentId" placeholder="e.g. 2026-0001"></label></div>
+        <label>Username<input name="username" autocomplete="username" placeholder="Your username" required></label>
+        <label>Password<input name="password" type="password" autocomplete="current-password" placeholder="At least 6 characters" required></label>
+        <label class="remember-label"><input id="remember-me" name="remember" type="checkbox"> <span>Remember me on this device</span></label>
+        <p class="auth-error" id="auth-error" role="alert"></p>
+        <button class="primary-button auth-submit" id="auth-submit" type="submit">Sign in</button>
+      </form>
+      <button class="auth-switch" id="auth-switch" type="button">Need an account? <strong>Register here</strong></button>
+    </div>
+  </section>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <a class="brand" href="#dashboard" aria-label="GradeTrack home"><span class="brand-mark">G</span><span>GradeTrack</span></a>
+      <p class="eyebrow">Your academic cockpit</p>
+      <nav class="nav-list" aria-label="Main navigation">
+        <a class="nav-link active" href="#dashboard" data-view="dashboard"><span class="nav-icon">01</span>Overview</a>
+        <a class="nav-link" href="#grades" data-view="grades"><span class="nav-icon">02</span>Grades</a>
+        <a class="nav-link" href="#subjects" data-view="subjects"><span class="nav-icon">03</span>Subjects</a>
+        <a class="nav-link" href="#insights" data-view="insights"><span class="nav-icon">04</span>Insights</a>
+        <a class="nav-link" href="#files" data-view="files"><span class="nav-icon">05</span>Files</a>
+      </nav>
+      <div class="sidebar-bottom">
+        <div class="profile-mini"><div class="avatar" id="sidebar-avatar">MP</div><div><strong id="sidebar-name">My profile</strong><span id="sidebar-course">Student</span></div></div>
+        <div class="sidebar-links"><button class="text-button" id="profile-button" type="button">Edit profile <span>-></span></button><button class="text-button logout-button" id="logout-button" type="button">Log out <span>-></span></button></div>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <header class="topbar">
+        <div><span class="date-label" id="today-label"></span><h1 id="page-title">Good morning, Mat!</h1></div>
+        <div class="top-actions"><button class="icon-button" id="undo-button" title="Undo last action" type="button">Undo</button><button class="icon-button" id="redo-button" title="Redo last action" type="button">Redo</button><button class="primary-button" id="quick-add" type="button">+ Add grade</button></div>
+      </header>
+
+      <section class="view active-view" id="view-dashboard" data-page="dashboard">
+        <div class="hero-row"><div><span class="section-kicker">Semester pulse</span><h2>Keep the momentum.</h2><p class="muted">A clear view of where your work stands today.</p></div><div class="semester-select"><label for="semester">Term</label><select id="semester"><option>First semester 2026</option><option>Second semester 2026</option></select></div></div>
+        <div class="stats-grid"><article class="stat-card accent"><span>Current average</span><strong id="average-stat">0.0%</strong><small id="average-note">Add grades to see your average</small></article><article class="stat-card"><span>Grades logged</span><strong id="grade-count-stat">0</strong><small id="grade-count-note">Across all subjects</small></article><article class="stat-card"><span>Subjects</span><strong id="subject-count-stat">0</strong><small id="subject-count-note">Set up your classes</small></article><article class="stat-card"><span>Best subject</span><strong id="best-subject-stat">--</strong><small id="best-subject-note">Your strongest average</small></article></div>
+        <div class="content-grid"><article class="panel trend-panel"><div class="panel-heading"><div><span class="section-kicker">Progress</span><h3>Recent performance</h3></div><a href="#insights" data-view="insights" class="quiet-link">View insights -></a></div><div class="chart-wrap"><svg id="trend-chart" viewBox="0 0 700 220" role="img" aria-label="Recent performance chart"><line x1="45" y1="20" x2="45" y2="180" class="chart-axis"/><line x1="45" y1="180" x2="680" y2="180" class="chart-axis"/><path id="chart-line" d="M45 180" class="chart-line"/><g id="chart-points"></g></svg></div><div class="chart-legend"><span><i class="legend-dot"></i> Score trend</span><span id="chart-caption">Your latest grades will appear here</span></div></article><article class="panel activity-panel"><div class="panel-heading"><div><span class="section-kicker">Latest</span><h3>Recent grades</h3></div><a href="#grades" data-view="grades" class="quiet-link">See all -></a></div><div id="recent-list" class="stack-list"><div class="empty-state compact"><strong>No grades yet</strong><span>Start with your first assessment.</span></div></div></article></div>
+        <div class="content-grid lower-grid"><article class="panel subject-panel"><div class="panel-heading"><div><span class="section-kicker">At a glance</span><h3>Subject standing</h3></div><a href="#subjects" data-view="subjects" class="quiet-link">Manage -></a></div><div id="subject-list" class="subject-list"><div class="empty-state compact"><strong>No subjects yet</strong><span>Add your classes to get started.</span></div></div></article><article class="tip-panel"><span class="tip-number">TIP 01</span><h3>Small entries, big clarity.</h3><p>Log assessments as they happen. Your average becomes useful when it stays current.</p><button class="outline-button" id="tip-add" type="button">Log an assessment</button></article></div>
+      </section>
+
+      <section class="view" id="view-grades" data-page="grades"><div class="page-intro"><div><span class="section-kicker">Gradebook</span><h2>Every result, in one place.</h2><p class="muted">Track scores and spot what needs attention.</p></div><button class="primary-button" id="grades-add" type="button">+ Add grade</button></div><div class="toolbar"><label class="search-field"><span>Search</span><input id="grade-search" type="search" placeholder="Find an assessment..."></label><label class="filter-field"><span>Subject</span><select id="grade-filter"><option value="all">All subjects</option></select></label></div><article class="panel table-panel"><div class="table-scroll"><table><thead><tr><th>Assessment</th><th>Subject</th><th>Score</th><th>Percentage</th><th>Date</th><th></th></tr></thead><tbody id="grades-table"></tbody></table></div><div id="grades-empty" class="empty-state hidden"><strong>Your gradebook is empty</strong><span>Add an assessment to begin tracking.</span></div></article></section>
+
+      <section class="view" id="view-subjects" data-page="subjects"><div class="page-intro"><div><span class="section-kicker">Course map</span><h2>Build your semester.</h2><p class="muted">Weights make the average tell the truth.</p></div><button class="primary-button" id="subject-add" type="button">+ Add subject</button></div><div id="subjects-grid" class="cards-grid"></div></section>
+
+      <section class="view" id="view-insights"><div class="page-intro"><div><span class="section-kicker">Analytics</span><h2>Turn scores into signals.</h2><p class="muted">Know what is moving your average.</p></div></div><div class="insights-grid"><article class="panel insight-main"><span class="section-kicker">Distribution</span><h3>Subject performance</h3><div id="insight-bars" class="bar-list"></div></article><article class="panel insight-callout"><span class="section-kicker">Focus next</span><div id="focus-subject" class="focus-score">--</div><h3 id="focus-title">Add a subject to get a focus recommendation.</h3><p id="focus-copy" class="muted">GradeTrack compares your subject averages so your next study block has a direction.</p></article></div></section>
+
+      <section class="view" id="view-files"><div class="page-intro"><div><span class="section-kicker">Attachments</span><h2>Keep the evidence close.</h2><p class="muted">Store a lightweight record of submitted work alongside your grades.</p></div><button class="primary-button" id="file-add" type="button">+ Add file</button></div><article class="panel files-panel"><div id="files-list" class="file-list"></div><div id="files-empty" class="empty-state"><strong>No files attached</strong><span>Save the name of a rubric, paper, or result for quick reference.</span></div></article></section>
+    </main>
+  </div>
+
+  <dialog id="grade-dialog" class="dialog"><form method="dialog" id="grade-form"><div class="dialog-heading"><div><span class="section-kicker">New entry</span><h2>Log a grade</h2></div><button class="close-button" value="cancel" aria-label="Close">x</button></div><label>Subject<select name="subject" id="grade-subject" required></select></label><label>Assessment name<input name="activity" placeholder="e.g. Midterm exam" required></label><label>Category<select name="category"><option>Exam</option><option>Quiz</option><option>Assignment</option><option>Project</option><option>Other</option></select></label><div class="form-row"><label>Score<input name="score" type="number" min="0" step="0.01" required></label><label>Out of<input name="total" type="number" min="1" step="0.01" value="100" required></label></div><label>Date<input name="date" type="date" required></label><div class="dialog-actions"><button class="outline-button" value="cancel">Cancel</button><button class="primary-button" value="default">Save grade</button></div></form></dialog>
+  <dialog id="subject-dialog" class="dialog"><form method="dialog" id="subject-form"><div class="dialog-heading"><div><span class="section-kicker">Course map</span><h2>Add a subject</h2></div><button class="close-button" value="cancel" aria-label="Close">x</button></div><label>Subject name<input name="name" placeholder="e.g. Mathematics" required></label><label>Category weights <span class="label-hint">optional, e.g. Exams 60, Activities 40</span><input name="weights" placeholder="Exams 60, Activities 40"></label><div class="dialog-actions"><button class="outline-button" value="cancel">Cancel</button><button class="primary-button" value="default">Add subject</button></div></form></dialog>
+  <dialog id="profile-dialog" class="dialog"><form method="dialog" id="profile-form"><div class="dialog-heading"><div><span class="section-kicker">Identity</span><h2>Your profile</h2></div><button class="close-button" value="cancel" aria-label="Close">x</button></div><label>Full name<input name="name" id="profile-name" required></label><label>Course or program<input name="course" id="profile-course" placeholder="e.g. BS Computer Science"></label><label>Student ID<input name="studentId" id="profile-id" placeholder="e.g. 2026-0001"></label><div class="dialog-actions"><button class="outline-button" value="cancel">Cancel</button><button class="primary-button" value="default">Save profile</button></div></form></dialog>
+  <input type="file" id="file-input" hidden>
+  <div class="toast" id="toast" role="status"></div>
+  <script src="app.js"></script>
+</body>
+</html>
